@@ -3,7 +3,7 @@
 ## About
 A modern seed application with persistance and authentication.  Nobody knows
 the best thing to do all of the time however, this project is intended as a 
-quick way to get started using best technology as well practices 
+quick way to get started using some of the best technology as well practices 
 found at the time this was written.
 
 ### Technology
@@ -11,7 +11,8 @@ found at the time this was written.
 * [Angular 6](https://angular.io/apim)
     * [Angular Style Guide](https://angular.io/guide/styleguide)
     * HTML 5 routes/history
-    * TypeScript 
+    * [TypeScript](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+        * Benefits  
     * Angular Material 
     * Angular Animations with Hammer.js
 * [WebPack 4](https://webpack.js.org/concepts/)
@@ -23,7 +24,7 @@ found at the time this was written.
         * Ahead of Time Compilation
         * gzip
         * lite-server with BrowserSync
-    * Cloud9 IDE Build (dev & prod) 
+    * Cloud9 IDE Build Support (dev & prod) 
 * [MongoDB](https://docs.mongodb.com/manual/)
     * [mLab](https://docs.mlab.com/) 
 * [GraphQL](https://graphql.org/learn/)
@@ -36,10 +37,10 @@ found at the time this was written.
 * Testing
     * Unit
     * End-to-End
-* Accessability
-    *   
+* Accessibility
+    * [WCAG 2](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0)  
 * Security
-    * OWASP Compliances 
+    * [OWASP Compliances](https://www.owasp.org/index.php/Code_Reviews_and_Compliance) 
 
 ## Getting Started
 
@@ -49,3 +50,7 @@ found at the time this was written.
 
 ## Troubleshooting
 
+## License
+UNLICENSED
+
+License will not be free to use until seed is complete and stable
