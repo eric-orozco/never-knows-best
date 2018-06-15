@@ -6,7 +6,7 @@ the best thing to do all of the time however, this project is intended as a
 quick way to get started using best technology as well practices 
 found at the time this was written.
 
-### Features
+### Technology
 
 * [Angular 6](https://angular.io/apim)
     * [Angular Style Guide](https://angular.io/guide/styleguide)
@@ -23,12 +23,23 @@ found at the time this was written.
         * Ahead of Time Compilation
         * gzip
         * lite-server with BrowserSync
-* MongoDB
+    * Cloud9 IDE Build (dev & prod) 
+* [MongoDB](https://docs.mongodb.com/manual/)
     * [mLab](https://docs.mlab.com/) 
 * [GraphQL](https://graphql.org/learn/)
-    * 
+    * [Apollo Angular](https://www.apollographql.com/docs/angular/)
 * [Heroku](https://devcenter.heroku.com/categories/reference)
-    * 
+    * Optional Deployment
+    
+### Standards
+
+* Testing
+    * Unit
+    * End-to-End
+* Accessability
+    *   
+* Security
+    * OWASP Compliances 
 
 ## Getting Started
 
