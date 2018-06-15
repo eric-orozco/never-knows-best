@@ -1,0 +1,62 @@
+{
+  "name": "Never-Knows-Best",
+  "version": "1.0.0",
+  "description": "Personal WebSite",
+  "main": "index.js",
+  "repository": "",
+  "author": "Eric Orozco",
+  "scripts": {
+    "test": "",
+    "build:dev": "webpack-dev-server --inline --progress --host $IP --port $PORT --config webpack.config.dev.js",
+    "build:prod": "del-cli dist && ngc -p tsconfig.aot.json && ngc -p tsconfig.aot.json && webpack --config webpack.config.prod.js --progress --profile --bail && npm run clean",
+    "clean": "del-cli 'src/app/**/*.js' 'src/*.js' 'src/**/*.ngfactory.ts' 'src/app/**/*.js.map' 'src/app/**/*.shim.ts' 'src/**/*.ngsummary.*' 'src/app/**/*.ngstyle.ts' 'dist/app'",
+    "serve": "lite-server",
+    "c9:dev": "webpack-dev-server --inline --progress --host $C9_IP --port $C9_PORT --public $C9_HOSTNAME --config webpack.config.dev.js",
+    "c9:serve-prod": "npm run serve --host $C9_IP --port $C9_PORT --public $C9_HOSTNAME",
+    "c9:prod": "npm run build:prod && npm run c9:serve-prod"
+  },
+  "engines": {
+    "node": "8.11.2",
+    "npm": "6.1.0"
+  },
+  "dependencies": {
+    "@angular/animations": "^6.0.4",
+    "@angular/cdk": "^6.2.1",
+    "@angular/common": "^6.0.4",
+    "@angular/compiler": "^6.0.4",
+    "@angular/core": "^6.0.4",
+    "@angular/forms": "^6.0.4",
+    "@angular/http": "^6.0.4",
+    "@angular/material": "^6.2.1",
+    "@angular/platform-browser": "^6.0.4",
+    "@angular/platform-browser-dynamic": "^6.0.4",
+    "@angular/router": "^6.0.4",
+    "async": "~2.6.1",
+    "core-js": "^2.5.7",
+    "express": "^4.16.3",
+    "rxjs": "^6.2.1",
+    "zone.js": "^0.8.26"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "^6.0.4",
+    "@ngtools/webpack": "^6.0.8",
+    "@types/core-js": "^2.5.0",
+    "@types/node": "^10.3.2",
+    "angular-router-loader": "^0.8.5",
+    "angular2-template-loader": "^0.6.2",
+    "awesome-typescript-loader": "^5.0.0",
+    "compression-webpack-plugin": "^1.1.11",
+    "del-cli": "^1.1.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "lite-server": "^2.3.0",
+    "raw-loader": "^0.5.1",
+    "typescript": "2.7.2",
+    "webpack": "^4.12.0",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.0.4",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2"
+  },
+  "license": "UNLICENSED"
+}
