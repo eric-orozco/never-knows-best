@@ -1,10 +1,10 @@
 # Never Knows Best
 
 ## About
-A modern seed application with persistance and authentication.  Nobody knows
-the best thing to do all of the time however, this project is intended as a 
-quick way to get started using some of the best technology as well practices 
-found at the time this was written.
+Nobody knows the best thing to do all of the time. However, this project is 
+intended as a quick way to get a modern "full stack" seed application started 
+using what many would consider the best technology as well practices available 
+at the time this was written. 
 
 ### Technology
 
@@ -13,11 +13,11 @@ found at the time this was written.
     * HTML 5 routes/history
     * [TypeScript](https://www.typescriptlang.org/docs/handbook/basic-types.html)
         * Benefits  
-    * Angular Material 
+    * [Angular Material](https://material.angular.io/components/categories) 
     * Angular Animations with Hammer.js
 * [WebPack 4](https://webpack.js.org/concepts/)
     * Lazy-loaded bundle chunks
-    * Bundle analyzerg
+    * Bundle analyzation
     * Dev Build
         * WebPack Dev Server
     * Prod Build
@@ -25,7 +25,7 @@ found at the time this was written.
         * gzip
         * lite-server with BrowserSync
     * Cloud9 IDE Build Support (dev & prod) 
-* [MongoDB](https://docs.mongodb.com/manual/)
+* Persistence [MongoDB](https://docs.mongodb.com/manual/)
     * [mLab](https://docs.mlab.com/) 
 * [GraphQL](https://graphql.org/learn/)
     * [Apollo Angular](https://www.apollographql.com/docs/angular/)
@@ -34,13 +34,25 @@ found at the time this was written.
     
 ### Standards
 
+* Documentation
+    * [JSDoc](http://usejsdoc.org/) 
 * Testing
     * Unit
     * End-to-End
 * Accessibility
     * [WCAG 2](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0)  
 * Security
-    * [OWASP Compliances](https://www.owasp.org/index.php/Code_Reviews_and_Compliance) 
+    * [OWASP Compliances](https://www.owasp.org/index.php/Code_Reviews_and_Compliance)
+
+### Features
+
+* [OAUTH](https://www.npmjs.com/package/oauth) user authentication 
+* router based navigation
+* basic blog
+* basic chat
+* basic photo gallery
+* i18n
+* theme switching
 
 ## Getting Started
 
