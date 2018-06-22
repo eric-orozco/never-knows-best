@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 //import { HomeComponent } from './home.component'; 
 import { HeaderComponent } from './header/header.component'; 
 
-import { AppRoutingModule } from './app-routing.module'; // root route
-import { PostsModule } from './posts/posts.module'; // child routes
-import { NotFoundModule } from './core/not-found/not-found.module'; // child routes
+import { AppRoutingModule } from './app-routing.module'; // includes root route
+import { PostsModule } from './posts/posts.module'; // includes child routes
+import { UsersModule } from './users/users.module'; // includes child routes
+import { NotFoundModule } from './core/not-found/not-found.module'; // includes child routes
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { NotFoundModule } from './core/not-found/not-found.module'; // child rou
         MatToolbarModule,
         MatTabsModule,
         PostsModule,
+        UsersModule,
         NotFoundModule
     ],
     providers: [

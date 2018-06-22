@@ -7,7 +7,7 @@ import {UsersComponent} from './users.component';
     imports: [
         RouterModule.forChild([
             {
-                path: '', component: UsersComponent
+                path: 'users', component: UsersComponent
             }
         ])
     ],
