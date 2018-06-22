@@ -1,7 +1,19 @@
-<h1>Hello world!</h1>
+<app-header></app-header>
 
-<hr>
-<a routerLink="/">Home</a>
-<a routerLink="/users">Users</a>
-<hr>
-<router-outlet></router-outlet>
+<nav mat-tab-nav-bar>
+  <a mat-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="link.path"
+     routerLinkActive 
+     #rla="routerLinkActive"
+     [active]="rla.isActive"
+     >
+    {{link.label}}
+  </a>
+</nav>
+
+<main>
+    
+    <!-- display area for module content being navigated (routed) to -->
+    <router-outlet></router-outlet>
+</main>

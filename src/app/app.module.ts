@@ -1,22 +1,34 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs'
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { HomeComponent } from './home.component'; 
+import { HeaderComponent } from './header/header.component'; 
+
+import { AppRoutingModule } from './app-routing.module'; // root route
+import { PostsModule } from './posts/posts.module'; // child routes
+import { NotFoundModule } from './core/not-found/not-found.module'; // child routes
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+//        HomeComponent,
+        HeaderComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
-        BrowserAnimationsModule
+        MatToolbarModule,
+        MatTabsModule,
+        PostsModule,
+        NotFoundModule
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: [
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {}

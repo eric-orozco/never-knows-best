@@ -1,0 +1,16 @@
+:host { /* root component element */
+    display: block;
+    margin-top: 1rem;
+}
+
+mat-card {
+    margin: 0 1rem;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+}
