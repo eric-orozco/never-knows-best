@@ -7,6 +7,20 @@ const express = require('express');
 // Node JS, server-side Express app
 const app = express();
 
+app.use((req,res,next) => {
+    // CORS
+    res.setHeader("Access-Control-Allow-Origin", "*"); // which domains can access these resources
+    res.setHeader("Access-Control-Allow-Headers", 
+        "Origin, X-Requested-With, Content-Type, Accept"); // allow extra headers 
+    res.setHeader(
+        "Access-Control-Allow-Methods", 
+        "GET, POST, PATCH, DELETE, OPTIONS"
+    );
+    
+    // continue handling paths with other middlewares
+    next();
+});
+
 // use middleware for posts path
 app.use('/api/posts', (req, res, next) => {
     console.log('first middleware');

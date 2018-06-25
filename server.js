@@ -5,7 +5,7 @@ const http = require('http');
 // import the backend application
 const app = require('./backend/app');
 // import debug capability
-//const debug = require('debug')('node-angular');
+const debug = require('debug')('node-angular');
 
 /**
  * 
@@ -13,6 +13,8 @@ const app = require('./backend/app');
  */
 const normalizePort = val => {
 	var port = parseInt(val, 10);
+	
+	console.log('normalize port',port);
 	
 	if(isNaN(port)){
 		return val;
@@ -55,12 +57,11 @@ const onError = error => {
 const onListening = () => {
 	const addr = server.address();
 	const bind = typeof addr === "string" ? "pipe" + addr : "port " + port;
-	//debug("Listening on " + bind);
+	debug("Listening on " + bind);
 };
 
 // server configuration(s)
-const port = normalizePort(process.env.PORT || "3000");
-console.log('port: ', port);
+const port = (process.env.PORT || "3000");
 app.set('port', port)
 
 // create a new server instance

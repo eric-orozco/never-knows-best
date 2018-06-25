@@ -6,3 +6,8 @@
 .info-text {
     text-align: center;
 }
+
+.mat-accordion {
+    display: block;
+    margin: 0 1rem;
+}

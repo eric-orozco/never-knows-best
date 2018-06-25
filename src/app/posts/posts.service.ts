@@ -20,10 +20,14 @@ export class PostsService {
      */
     getPosts() {
         // return a spread so the original reference array remains immutable (unable to be changed)
-        return [...this.posts];
+        //return [...this.posts];
         
-        
-        //this.http.get();
+        this.http.get<{message: string, posts: Post[]}>(window.location.protocol + '//' + window.location.hostname + ':8081/api/posts')
+            .subscribe((postData) => {
+                this.posts = postData.posts
+                // send notification that posts were updated
+                this.postsUpdated.next([...this.posts]);
+            });
     }
     
     
@@ -43,6 +47,7 @@ export class PostsService {
      */
     addPost(title: string, content: string){
         const post: Post = {
+            id: null,
             title: title,
             content: content
         }

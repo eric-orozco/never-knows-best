@@ -12,10 +12,11 @@
     "clean": "del-cli 'src/app/**/*.js' 'src/*.js' 'src/**/*.ngfactory.ts' 'src/app/**/*.js.map' 'src/app/**/*.shim.ts' 'src/**/*.ngsummary.*' 'src/app/**/*.ngstyle.ts' 'dist/app'",
     "serve": "lite-server",
     "c9:dev": "webpack-dev-server --inline --progress --host $C9_IP --port $C9_PORT --public $C9_HOSTNAME --config webpack.config.dev.js",
-    "c9:serve-prod": "npm run serve --host $C9_IP --port $C9_PORT --public $C9_HOSTNAME",
-    "c9:prod": "npm run build:prod && npm run c9:serve-prod",
-    "start:backend": "nodemon server.js --port 8081",
-    "start": "node server.js --port 8081 && npm run build:prod && npm run serve"
+    "c9:serve:prod": "npm run serve --host $C9_IP --port $C9_PORT --public $C9_HOSTNAME",
+    "c9:prod": "npm run build:prod && npm run c9:serve:prod",
+    "c9:api:dev": "PORT=8081 HOST=$C9_IP nodemon server.js",
+    "api:dev": "nodemon server.js",
+    "start": "PORT=8081 node server.js && npm run build:prod && npm run serve"
   },
   "engines": {
     "node": "8.11.2",
