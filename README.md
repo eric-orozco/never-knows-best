@@ -3,7 +3,7 @@
 ## Overview
 This project is intended as a quick way to get a modern "full stack" seed
 application started using what many would consider the best technology 
-(as well practices) available at the time this was written.
+(as well as practices) available at the time this was written.
 
 No one knows the best way to handle every situation every time. With that in 
 mind, this project is intended to alleviate some of burden of dealing with 
