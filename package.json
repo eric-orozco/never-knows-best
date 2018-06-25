@@ -15,7 +15,7 @@
     "c9:serve-prod": "npm run serve --host $C9_IP --port $C9_PORT --public $C9_HOSTNAME",
     "c9:prod": "npm run build:prod && npm run c9:serve-prod",
     "start:backend": "nodemon server.js --port 8081",
-    "start": "npm run start:backend && npm run build:prod && npm run serve"
+    "start": "npm run server.js --port 8081 && npm run build:prod && npm run serve"
   },
   "engines": {
     "node": "8.11.2",
