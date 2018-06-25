@@ -1,10 +1,13 @@
-# Never Knows Best
+# Never Knows Best (MEAN Seed)
 
-## About
+## Overview
 Nobody knows the best thing to do all of the time. However, this project is 
 intended as a quick way to get a modern "full stack" seed application started 
 using what many would consider the best technology as well practices available 
 at the time this was written. 
+
+## Table of Contents
+
 
 ### Technology
 
