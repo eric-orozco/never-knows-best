@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs'
 
 import { AppComponent } from './app.component';
-//import { HomeComponent } from './home.component'; 
 import { HeaderComponent } from './header/header.component'; 
 
 import { AppRoutingModule } from './app-routing.module'; // includes root route
@@ -15,17 +15,17 @@ import { NotFoundModule } from './core/not-found/not-found.module'; // includes 
 @NgModule({
     declarations: [
         AppComponent,
-//        HomeComponent,
         HeaderComponent
     ],
     imports: [
+        HttpClientModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         MatToolbarModule,
         MatTabsModule,
         PostsModule,
         UsersModule,
-        NotFoundModule
+        NotFoundModule // must ALWAYS be imported last to ensure correct routing
     ],
     providers: [
     ],

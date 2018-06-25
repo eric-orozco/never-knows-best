@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 import { Post } from './post.model';
 
@@ -11,6 +12,8 @@ export class PostsService {
     // pass posts as subject payload
     private postsUpdated = new Subject<Post[]>();
     
+    constructor(private http: HttpClient) {}
+    
     /**
      * 
      * 
@@ -18,6 +21,9 @@ export class PostsService {
     getPosts() {
         // return a spread so the original reference array remains immutable (unable to be changed)
         return [...this.posts];
+        
+        
+        //this.http.get();
     }
     
     

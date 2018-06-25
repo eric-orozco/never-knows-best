@@ -15,8 +15,7 @@ app.use('/api/posts', (req, res, next) => {
 
 app.use((req, res, next) => {
     console.log('second middleware');
-    // send express response
-    //res.send('hello from express');
+    
     const posts = [{
             id: 'gadgadfgadg',
             title: 'first post',
@@ -38,6 +37,7 @@ app.use((req, res, next) => {
             content: 'awesome'
         },
     ];
+    // set success status and send express response
     res.status(200).json({
         message: 'posts fetched successfully',
         posts: posts

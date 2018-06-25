@@ -52,13 +52,24 @@ at the time this was written.
 * basic chat
 * basic photo gallery
 * i18n
+* 404 page not found
 * theme switching
+* websocket progress file upload
 
 ## Getting Started
+
 
 ### Local
 
 ### Cloud9
+
+### [Heroku](https://devcenter.heroku.com/categories/reference)
+[Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+
+Cloud9 Installation Command: 
+``` bash
+curl https://cli-assets.heroku.com/install.sh | sh
+```
 
 ## Troubleshooting
 

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Project seed including Angular, TypeScript, WebPack, MongoDB, GraphQL and more.",
   "main": "index.js",
-  "repository": "",
+  "repository": "https://github.com/eric-orozco/never-knows-best",
   "author": "Eric Orozco",
   "scripts": {
     "test": "",
