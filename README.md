@@ -1,10 +1,13 @@
 # Never Knows Best (MEAN Seed)
 
 ## Overview
-Nobody knows the best thing to do all of the time. However, this project is 
-intended as a quick way to get a modern "full stack" seed application started 
-using what many would consider the best technology as well practices available 
-at the time this was written. 
+This project is intended as a quick way to get a modern "full stack" seed
+application started using what many would consider the best technology 
+(as well practices) available at the time this was written.
+
+No one knows the best way to handle every situation every time. With that in 
+mind, this project is intended to alleviate some of burden of dealing with 
+getting a project ready to begin actual feature development.
 
 ## Table of Contents
 
