@@ -1,0 +1,8 @@
+.mat-toolbar > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-toolbar.mat-primary {
+    padding: 0 2rem;
+}

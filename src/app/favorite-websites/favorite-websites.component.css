@@ -1,0 +1,41 @@
+table {
+    margin: 2rem auto;
+    width: 100%;
+}
+
+.filters {
+    align-items: center;
+    display: flex;
+    margin: 0 0 2rem 0;
+}
+
+.no-results {
+    align-items: center;
+    display: flex;
+    padding: 2rem 0;
+}
+
+mat-chip-list {
+    outline: none;
+}
+
+mat-chip-list > div:nth-child(1) {
+    padding: 1rem 0;
+}
+
+td mat-chip-list div {
+    padding: 1rem 0 !important;
+}
+
+/* start work around for active sort arrow being the only one to animate properly */
+::ng-deep .mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
+    opacity: 1;
+}
+
+::ng-deep .mat-sort-header-pointer-left.ng-trigger.ng-trigger-leftPointer{
+    transform: rotate(-45deg);
+}
+::ng-deep .mat-sort-header-pointer-right.ng-trigger.ng-trigger-rightPointer{
+    transform: rotate(45deg);
+}
+/* end work around for active sort arrow being the only one to animate properly */
