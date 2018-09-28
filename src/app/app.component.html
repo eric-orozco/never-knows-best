@@ -1,20 +1,25 @@
-<app-header></app-header>
-
-<nav mat-tab-nav-bar>
-  <a mat-tab-link
-     *ngFor="let link of navLinks"
-     [routerLink]="link.path"
-     routerLinkActive 
-     #rla="routerLinkActive"
-     [active]="rla.isActive"
-     [routerLinkActiveOptions]="{exact:true}"
-     >
-    {{link.label}}
-  </a>
-</nav>
-
-<main>
+<div class="app-wrapper">
     
-    <!-- display area for module content being navigated (routed) to -->
-    <router-outlet></router-outlet>
-</main>
+    <app-header></app-header>
+    
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link
+         *ngFor="let link of navLinks"
+         [routerLink]="link.path"
+         routerLinkActive 
+         #rla="routerLinkActive"
+         [active]="rla.isActive"
+         [routerLinkActiveOptions]="{exact:true}"
+         >
+        {{link.label}}
+      </a>
+    </nav>
+    
+    <main>
+        <!-- display area for module content being navigated (routed) to -->
+        <router-outlet></router-outlet>
+    </main>
+    
+    <app-footer></app-footer>
+    
+</div>

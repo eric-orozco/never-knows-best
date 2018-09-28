@@ -63,11 +63,35 @@ getting a project ready to begin actual feature development.
 * websocket progress file upload
 
 ## Getting Started
-
+This project can be set up for development in a local workstation or within
+the cloud IDE: Cloud9 IDE.
 
 ### Local
 
+
 ### Cloud9
+#### Run API Server
+``` bash
+npm run c9:api:dev
+```
+
+#### Run App UI
+``` bash
+npm run c9:dev
+```
+
+### Environments
+#### Application Frontend
+<host>:8080
+
+#### Backend/API
+<host>: 8081
+
+#### [WebPack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+<host>:8082 (https not supported in Cloud9 for port 8082)
+
+
+
 
 ### [Heroku](https://devcenter.heroku.com/categories/reference)
 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)

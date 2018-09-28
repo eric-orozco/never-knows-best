@@ -2,24 +2,28 @@
 <html lang="en">
 
 <head>
-    <base href="/"><!-- sets first child for routing -->
+    <title>Never Knows Best - MEAN Seed</title>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Never Knows Best Seed</title>
-    <link href="node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <base href="/"><!-- sets first child for routing -->
+    
+    <link href="node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body class="mat-app-background">
     <app-root>
         <div class="loading-message-container">
-            <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            <svg class="spinner" width="100px" height="100px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="10%" stroke-linecap="round" cx="50%" cy="50%" r="45"></circle>
             </svg>
         </div>
     </app-root>
     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         * {
             font-family: sans-serif;
@@ -30,18 +34,25 @@
         body {
             height: 100%;
         }
+        
+        .group:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
         .loading-message-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
+            height: 100vh;
         }
 
         .spinner {
             animation: rotator 1.4s linear infinite;
         }
-         .path {
+        
+        .path {
             stroke-dasharray: 187;
             stroke-dashoffset: 0;
             transform-origin: center;
@@ -88,6 +99,20 @@
                 stroke-dashoffset: 187;
                 transform: rotate(450deg);
             }
+        }
+        
+        .overflow-visible .mat-tab-body-wrapper,
+        .overflow-visible .mat-tab-body.mat-tab-body-active,
+        .overflow-visible .mat-tab-body > div {
+            overflow: visible;
+        }
+        
+        .overflow-visible {
+            padding: 0;
+        }
+        
+        .overflow-visible .mat-tab-body-wrapper {
+            padding: 2rem;
         }
     </style>
 </body>

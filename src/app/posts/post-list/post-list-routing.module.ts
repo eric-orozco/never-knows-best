@@ -9,8 +9,6 @@ import { PostListComponent } from './post-list.component';
             {
                 path: 'posts-list', 
                 component: PostListComponent
-                //     //{ path: 'posts', loadChildren: './posts/post-list/post-list.module#PostListModule' },
-
             }
         ])
     ],

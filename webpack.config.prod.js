@@ -19,7 +19,8 @@ module.exports = webpackMerge(commonConfig, {
     },
 
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                 loader: '@ngtools/webpack'
             },

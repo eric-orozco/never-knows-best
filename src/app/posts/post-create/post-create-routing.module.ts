@@ -12,7 +12,10 @@ import { PostCreateComponent } from './post-create.component';
             {
                 path: 'posts-create', 
                 component: PostCreateComponent
-                //{ path: 'posts-create', loadChildren: './posts/post-create/post-create.module#PostCreateModule' },
+            },
+            {
+                path: 'posts-edit/:postId', 
+                component: PostCreateComponent
             }
         ])
     ],

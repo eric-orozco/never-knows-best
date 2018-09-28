@@ -2,16 +2,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = function() {
+
     return {
-        entry: {
-            //polyfill: './src/polyfills.ts',
-            //vendor: './src/vendor.ts'
-        },
 
         output: {
-            path: path.resolve(__dirname, 'dist'),
+            path: path.resolve(__dirname, 'dist'), // build destination directory
             publicPath: '/' // have files living at same level as other build artifacts
         },
 
@@ -20,13 +18,23 @@ module.exports = function() {
         },
 
         module: {
-            rules: [{
+            rules: [
+                {
                     test: /\.html$/,
                     loader: 'html-loader'
                 },
                 {
                     test: /\.css$/,
                     loader: ['raw-loader']
+                },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        // fallback to style-loader in development
+                        process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+                        "css-loader",
+                        "sass-loader"
+                    ]
                 }
             ],
             exprContextCritical: false
@@ -35,25 +43,31 @@ module.exports = function() {
         plugins: [
             new HtmlWebpackPlugin({
                 template: 'src/app/index.html'
+            }),
+            new MiniCssExtractPlugin({
+                // Options similar to the same options in webpackOptions.output
+                // both options are optional
+                filename: "[name].css",
+                chunkFilename: "[id].css"
+            }),
+            new BundleAnalyzerPlugin({
+                // analyzerMode: 'server' to start HTTP server to display report;
+                // 'static' for single .html file
+                analyzerMode: 'static',
+                analyzerPort: 8082, // 8080 is web app, 8081 is backend API
+                analyzerHost: process.env.IP
             })
-            // ,
-            // new BundleAnalyzerPlugin({
-            //     analyzerPort: process.env.PORT,
-            //     analyzerHost: process.env.IP
-            // })
         ],
 
         optimization: {
             splitChunks: {
-                chunks: "all"
-                // ,
-                // cacheGroups: {
-                //     commons: {
-                //         test: /[\\/]node_modules[\\/]/,
-                //         name: 'vendors',
-                //         chunks: 'all'
-                //     }
-                // }
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all'
+                    }
+                }
             }
         }
     };

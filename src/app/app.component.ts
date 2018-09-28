@@ -23,9 +23,9 @@ export class AppComponent {
             label: 'Posts/Create',
             path: '/posts-create'
         },
-        {
-            label: 'Posts/List',
-            path: '/posts-list'
+         {
+            label: 'Favorite Websites',
+            path: '/favorite-websites'
         }
     ];
 }
