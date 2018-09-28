@@ -6,3 +6,9 @@
 .mat-toolbar.mat-primary {
     padding: 0 2rem;
 }
+
+.suits {
+    display: flex;
+    justify-content: space-between;
+    line-height: 32px;
+}
