@@ -93,5 +93,20 @@
         "name": "Scam School",
         "URL": "https://www.youtube.com/user/scamschool/playlists",
         "tags": ["magic", "tutorials", "youtube"]
+    },
+    {
+        "name": "Bocopo Playing Cards",
+        "URL": "https://bocopo.com/,",
+        "tags": ["playing cards", "shopping"]
+    },
+    {
+        "name": "Ekaterina",
+        "URL": "https://www.youtube.com/user/BaByCatXD/playlists,",
+        "tags": ["magic", "youtube", "tutorials", "reviews"]
+    },
+    {
+        "name": "Kickstarter",
+        "URL": "https://www.kickstarter.com/discover/advanced?state=live&term=playing+cards&category_id=12&woe_id=0&sort=most_funded&seed=2564428&page=1",
+        "tags": ["playing cards", "shopping"]
     }
 ]

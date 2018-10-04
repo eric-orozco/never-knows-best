@@ -15,8 +15,16 @@ table {
     padding: 2rem 0;
 }
 
+::ng-deep .mat-tab-label {
+    text-transform: capitalize;
+}
+
 mat-chip-list {
     outline: none;
+}
+
+.mat-form-field {
+    width: 100%;
 }
 
 mat-chip-list > div:nth-child(1) {
@@ -25,6 +33,14 @@ mat-chip-list > div:nth-child(1) {
 
 td mat-chip-list div {
     padding: 1rem 0 !important;
+}
+
+::ng-deep .mat-table .mat-cell {
+    padding: 1em 0;
+}
+
+::ng-deep .mat-tab-group {
+    overflow: hidden;
 }
 
 /* start work around for active sort arrow being the only one to animate properly */

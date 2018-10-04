@@ -1,31 +1,48 @@
 const express = require('express');
 const router = express.Router();
-const favoriteWebsitesJSON = require('../data/favorite-websites.json');
 
-// use middleware for favorite websites path
-router.get('', (req, res, next) => {
-  // set success status and send express response
-  res.status(200).json({
-    message: 'favorite websites fetched successfully',
-    favoriteWebsites: favoriteWebsitesJSON
-  });
-  
-  getFavoriteWebsites();
-});
+// local data
+const favoriteWebsitesJSON = require('../data/favorite-websites/favorite-websites.json');
+const favoriteWebsitesCategoriesJSON = require('../data/favorite-websites/favorite-websites-categories.json');
+const favoriteWebsitesDisplayedFields = require('../data/favorite-websites/favorite-websites-displayed-fields');
 
-const getFavoriteWebsites = () => {
+const getOrderedFavoriteWebsites = () => {
   // sort the websites by name
-  let websites =  favoriteWebsitesJSON.sort((a, b) => {
+  let orderedFavoriteWebsites = favoriteWebsitesJSON.sort((a, b) => {
     return (a.name).localeCompare(b.name);
-  }).forEach((website) => {
-    if(website.hasOwnProperty('tags')) {
-      // sort the tags
+  });
+  // sort website tags
+  orderedFavoriteWebsites.forEach((website) => {
+    if (website.hasOwnProperty('tags')) {
       this.tags = website.tags.sort((a, b) => {
         return a.localeCompare(b);
       });
     }
   });
-  return websites;
+  return orderedFavoriteWebsites;
 };
+
+const getOrderedFavoriteWebsitesCategories = () => {
+  // sort the categories by name
+  let categories = favoriteWebsitesCategoriesJSON.sort((a, b) => {
+    return (a.name).localeCompare(b.name);
+  });
+  return categories;
+};
+
+const getFavoriteWebsitesCategories = () => {
+  return favoriteWebsitesCategoriesJSON;
+};
+
+// use middleware for favorite websites path
+router.get('', (req, res) => {
+  // set success status and send express response
+  res.status(200).json({
+    message: 'favorite websites fetched successfully',
+    favoriteWebsitesDisplayedFields: favoriteWebsitesDisplayedFields,
+    favoriteWebsitesCategories: getFavoriteWebsitesCategories(),
+    favoriteWebsites: getOrderedFavoriteWebsites()
+  });
+});
 
 module.exports = router;

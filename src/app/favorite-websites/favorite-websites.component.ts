@@ -14,23 +14,8 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
     // MatTable dependencies
     @ViewChildren(MatSort) sorts;
     
-    mainCategories = [
-        {
-            "name": "development",
-            "isSecret": false
-        },
-        {
-            "name": "magic",
-            "isSecret": true
-        }
-        ,
-        {
-            "name": "shopping",
-            "isSecret": false
-        }
-    ];
-
-    displayedColumns: string[] = ['name', 'tags'];
+    mainCategories: Object[];
+    displayedColumns: string[];
 
     // flag used to toggle loading indicators (if any)
     isLoading = false;
@@ -44,32 +29,30 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
      * 
      * 
      */
-    filterTag(tag, mainCategoryTag) {
-        return tag !== mainCategoryTag;
-    }
-    
-    /**
-     * 
-     * 
-     */
     ngOnInit() {
         // indicate loading has begun
         this.isLoading = true;
         // set listener for favorite websites updates
         this.favoriteWebsitesSub = this.favoriteWebsitesService.getFavoriteWebsitesUpdateListener().subscribe(
-            (websites:FavoriteWebsite[]) => {
+            (websiteData) => {
                 // indicate loading has completed
                 this.isLoading = false;
+                this.mainCategories = websiteData.favoriteWebsitesCategories;
+                this.displayedColumns = websiteData.favoriteWebsitesDisplayedFields.displayedFields;
                 // for each category, set filters and data source
                 this.mainCategories.forEach((category, index) => {
-                    // set filters
-                    category.chipFilters = this.getChipFiltersByCategory(websites, category);
-                    // set data source
-                    category.dataSource = this.getMatTableDataSource(websites.filter((website) => {
+                    // set model for filtering by tag
+                    category.chipFilters = this.getChipFiltersByCategory(websiteData.favoriteWebsites, category);
+                    // set model for filtering by name
+                    category.nameFilter = '';
+                    // set website data source
+                    category.dataSource = this.getMatTableDataSource(websiteData.favoriteWebsites.filter((website) => {
                         return website.tags.find((tag) => {
                             return tag === category.name;
                         });
                     }), this.sorts._results[index]);
+                    // set filtering method
+                    category.dataSource.filterPredicate = this.getFilterPredicate();
                 });
             }
         );
@@ -79,7 +62,6 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
     
     /**
      * 
-     * 
      */
     refreshWebsites() {
         // make a call to retrieve favorite websites from service
@@ -88,7 +70,8 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
     
     /**
      * 
-     * 
+     * @param websites -
+     * @param category - 
      */ 
     getChipFiltersByCategory(websites, category) {
         let chipFilters = [];
@@ -140,44 +123,54 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
     
     /**
      * 
+     * @param dataSource <MatTableDataSource> -
+     * @param name <string> -
+     * @param tags <Object[]> -
+     */ 
+    filterWebsites(dataSource:MatTableDataSource, name:string, tags:Object[]) {
+        let allFilters = [];
+        // include any name filtering
+        if (name) {
+            let nameTokens = [];
+            name = name.trim().toLowerCase()
+            nameTokens = name.split(' ');
+            allFilters = allFilters.concat(nameTokens);
+        }
+        // include any tag filtering
+        if(tags && tags.length) {
+            let activeTags = tags.filter(
+                // only filter by the tags that are not checked
+                (f) => {
+                    return f.value === true;
+                }
+            ));
+            allFilters = allFilters.concat(activeTags);
+        }
+        // apply all filters
+        dataSource.filter = allFilters;
+    }
+    
+    /**
      * 
      */
-    filterWebsitesByTags(filters, dataSource) {
-        if (filters) {
-            // define how the filter works
-            dataSource.filterPredicate = 
-                (data: Element, filter: Object[]) => {
-                    let allFound = filter.every((currentFilter) => {
-                        return data.tags.find((tag) => {
-                           return currentFilter.key === tag;
-                       }); 
-                    });
-                    return allFound;
-                };
-            // set the filter    
-            dataSource.filter = filters;
-        }
+    getFilterPredicate() {
+        return (data: Element, filter: Object[]) => {
+            let allFound = filter.every((currentFilter) => {
+                let tagFound = true;
+                let nameFound = true;
+                if (typeof currentFilter === 'string') {
+                    nameFound = data.name.toLowerCase().indexOf(currentFilter) !== -1;
+                } else {
+                    tagFound = data.tags.includes(currentFilter.key); 
+                }
+                return nameFound && tagFound;
+            });
+            return allFound;
+        };
     }
     
     /**
-     * 
-     * 
-     */ 
-    onChange(event, item, filters, dataSource) {
-        let activeFilters = filters.filter(
-            // only filter by the tags that are not checked
-            (f) => {
-                return f.value === true;
-            }
-        ));
-        // filter by all the tags to filter
-        this.filterWebsitesByTags(activeFilters, dataSource);
-    }
-    
-    /**
-     * 
-     * 
-     * 
+     * remove subscription to websites listener
      */
     ngOnDestroy() {
         // remove favorite websites listener (subscription) to prevent memory leak

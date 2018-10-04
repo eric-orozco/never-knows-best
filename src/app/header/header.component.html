@@ -1,13 +1,5 @@
 <header>
     <mat-toolbar color="primary">
-        <div>
-            <div>Never Knows Best</div>
-            <div class="suits">
-                <span>&clubs;</span>
-                <span>&hearts;</span>
-                <span>&spades;</span>
-                <span>&diams;</span>
-            </div>
-        </div>
+        <img *ngIf="logoURL" src="{{logoURL}}" alt="logo" />
     </mat-toolbar>
 </header>
