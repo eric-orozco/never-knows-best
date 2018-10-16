@@ -1,6 +1,19 @@
 # Never Knows Best (MEAN Seed)
 
-## Overview
+
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Technologies/Packages](#technology)
+3. [Features](#features)
+4. [Getting Started](#gettingstarted) 
+5. [Build](#build)
+6. [Deploy](#deploy)
+7. [Troubleshooting](#troubleshooting) 
+8. [License](#license)
+
+
+## Overview <a name="overview"></a>
 This project is intended as a quick way to get a modern "full stack" seed
 application started using what many would consider the best technology 
 (as well as practices) available at the time this was written.
@@ -9,10 +22,8 @@ No one knows the best way to handle every situation every time. With that in
 mind, this project is intended to alleviate some of burden of dealing with 
 getting a project ready to begin actual feature development.
 
-## Table of Contents
 
-
-### Technology
+## Technology/Packages <a name="technology"></a>
 
 * [Angular 6](https://angular.io/apim)
     * [Angular Style Guide](https://angular.io/guide/styleguide)
@@ -35,23 +46,25 @@ getting a project ready to begin actual feature development.
     * [mLab](https://docs.mlab.com/) 
 * [GraphQL](https://graphql.org/learn/)
     * [Apollo Angular](https://www.apollographql.com/docs/angular/)
+* Local Store [NGXS](https://ngxs.gitbook.io/ngxs/api)
+* Testing 
+    * Unit [Mocha Chai]
+        * (Mocha)[https://mochajs.org]
+        * (Chai)[https://www.chaijs.com/guide/styles/]
+    * Behavioral [Cucumber & Gherkin]()
+    * End-to-End (E2E) [Protractor]()
 * [Heroku](https://devcenter.heroku.com/categories/reference)
     * Optional Deployment
-    
-### Standards
-
 * Documentation
     * [JSDoc](http://usejsdoc.org/) 
-* Testing
-    * Unit
-    * End-to-End
+
+
+## Features <a name="features"></a>
+
 * Accessibility
     * [WCAG 2](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0)  
 * Security
     * [OWASP Compliances](https://www.owasp.org/index.php/Code_Reviews_and_Compliance)
-
-### Features
-
 * [OAUTH](https://www.npmjs.com/package/oauth) user authentication 
 * router based navigation
 * basic blog
@@ -62,12 +75,14 @@ getting a project ready to begin actual feature development.
 * theme switching
 * websocket progress file upload
 
-## Getting Started
+
+## Getting Started <a name="gettingstarted"></a>
 This project can be set up for development in a local workstation or within
 the cloud IDE: Cloud9 IDE.
 
-### Local
 
+## Build <a name="build"></a>
+### Local
 
 ### Cloud9
 #### Run API Server
@@ -90,9 +105,6 @@ npm run c9:dev
 #### [WebPack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
 <host>:8082 (https not supported in Cloud9 for port 8082)
 
-
-
-
 ### [Heroku](https://devcenter.heroku.com/categories/reference)
 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
@@ -101,9 +113,11 @@ Cloud9 Installation Command:
 curl https://cli-assets.heroku.com/install.sh | sh
 ```
 
-## Troubleshooting
+## Deploy <a name="deploy"></a>
 
-## License
+## Troubleshooting <a name="troubleshooting"></a>
+
+## License <a name="license"></a>
 UNLICENSED
 
 License will not be free to use until seed is complete and stable

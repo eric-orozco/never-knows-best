@@ -1,11 +1,15 @@
 [
     {
         "name": "magic",
-        "isSecret": true
+        "isSecret": false
     },
     {
         "name": "playing cards",
-        "isSecret": true
+        "isSecret": false
+    },
+    {
+        "name": "shopping",
+        "isSecret": false
     },
     {
         "name": "development",

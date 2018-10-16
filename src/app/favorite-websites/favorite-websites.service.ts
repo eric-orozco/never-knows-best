@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
-import { FavoriteWebsite } from './FavoriteWebsite.model';
+import { FavoriteWebsite } from './favorite-website.model';
 
 @Injectable({
     providedIn: 'root' // allow angular to find this single instance
@@ -17,7 +17,11 @@ export class FavoriteWebsitesService {
     
     private favoriteWebsites: FavoriteWebsite[] = [];
     
-    private FAVORITE_WEBSITES_DATA = {};
+    private FAVORITE_WEBSITES_DATA = {
+        'favoriteWebsitesDisplayedFields': [],
+        'favoriteWebsitesCategories': [],
+        'favoriteWebsites': []
+    };
     private favoriteWebsitesUpdated = new Subject<FavoriteWebsite[]>();
     
     /**
@@ -29,13 +33,9 @@ export class FavoriteWebsitesService {
         this.http.get<{message: string, favoriteWebsitesDisplayedFields: any, favoriteWebsitesCategories: any, favoriteWebsites: any}>(this.APIURL)
             // convert data fields to match UI models
             .pipe(map((favoriteWebsitesData) => {
-                //let mappedData = {};
-                console.log('favoriteWebsitesData', favoriteWebsitesData);
-                
                 if(favoriteWebsitesData.favoriteWebsitesDisplayedFields) {
                      this.FAVORITE_WEBSITES_DATA.favoriteWebsitesDisplayedFields = favoriteWebsitesData.favoriteWebsitesDisplayedFields;
                 }
-                
                 if(favoriteWebsitesData.favoriteWebsitesCategories) {
                     this.FAVORITE_WEBSITES_DATA.favoriteWebsitesCategories = favoriteWebsitesData.favoriteWebsitesCategories.map(favoriteWebsitesCategory => {
                         return {
@@ -44,7 +44,6 @@ export class FavoriteWebsitesService {
                         };
                     });
                 }
-                
                 if(favoriteWebsitesData.favoriteWebsites) {
                     this.FAVORITE_WEBSITES_DATA.favoriteWebsites = favoriteWebsitesData.favoriteWebsites.map(favoriteWebsite => {
                         return {
@@ -54,14 +53,9 @@ export class FavoriteWebsitesService {
                         };
                     });
                 }
-                console.log('mapped data', this.FAVORITE_WEBSITES_DATA);
                 return this.FAVORITE_WEBSITES_DATA;
             }))
             .subscribe(transformedFavoriteWebsites => {
-                //console.log('transformedFavoriteWebsites', transformedFavoriteWebsites)
-                //this.favoriteWebsites = transformedFavoriteWebsites;
-                // send notification that favorite websites were updated
-                 // this.favoriteWebsitesUpdated.next([...this.favoriteWebsites]);
                 this.favoriteWebsitesUpdated.next(
                     this.FAVORITE_WEBSITES_DATA
                 );

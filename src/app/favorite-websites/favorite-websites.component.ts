@@ -143,7 +143,7 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
                 (f) => {
                     return f.value === true;
                 }
-            ));
+            );
             allFilters = allFilters.concat(activeTags);
         }
         // apply all filters

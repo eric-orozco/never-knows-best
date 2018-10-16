@@ -55,7 +55,7 @@
         "tags": ["playing cards", "puzzles", "shopping"]
     },
     {
-        "name": "7 Diamonds",
+        "name": "7 Diamonds - Threadless",
         "URL": "https://7diamonds.threadless.com/",
         "tags": ["shopping"]
     },
@@ -107,6 +107,21 @@
     {
         "name": "Kickstarter",
         "URL": "https://www.kickstarter.com/discover/advanced?state=live&term=playing+cards&category_id=12&woe_id=0&sort=most_funded&seed=2564428&page=1",
+        "tags": ["playing cards", "shopping"]
+    },
+    {
+        "name": "Entry",
+        "URL": "https://entry.us.com/",
+        "tags": ["playing cards", "cardistry", "shopping"]
+    },
+    {
+        "name": "David Blaine Shop",
+        "URL": "https://shop.davidblaine.com/collections/playingcards",
+        "tags": ["playing cards"]
+    },
+    {
+        "name": "7 Diamonds - MPC",
+        "URL": "https://www.makeplayingcards.com/sell/7diamonds",
         "tags": ["playing cards", "shopping"]
     }
 ]
