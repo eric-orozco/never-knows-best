@@ -13,7 +13,8 @@
 8. [License](#license)
 
 
-## Overview <a name="overview"></a>
+<a name="overview"></a>
+## Overview
 This project is intended as a quick way to get a modern "full stack" seed
 application started using what many would consider the best technology 
 (as well as practices) available at the time this was written.
@@ -23,7 +24,8 @@ mind, this project is intended to alleviate some of burden of dealing with
 getting a project ready to begin actual feature development.
 
 
-## Technology/Packages <a name="technology"></a>
+<a name="technology"></a>
+## Technology/Packages 
 
 * [Angular 6](https://angular.io/apim)
     * [Angular Style Guide](https://angular.io/guide/styleguide)
@@ -59,7 +61,8 @@ getting a project ready to begin actual feature development.
     * [JSDoc](http://usejsdoc.org/) 
 
 
-## Features <a name="features"></a>
+<a name="features"></a>
+## Features 
 
 * Accessibility
     * [WCAG 2](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0)  
@@ -76,12 +79,14 @@ getting a project ready to begin actual feature development.
 * websocket progress file upload
 
 
-## Getting Started <a name="gettingstarted"></a>
+<a name="gettingstarted"></a>
+## Getting Started
 This project can be set up for development in a local workstation or within
 the cloud IDE: Cloud9 IDE.
 
 
-## Build <a name="build"></a>
+<a name="build"></a>
+## Build
 ### Local
 
 ### Cloud9
@@ -113,11 +118,16 @@ Cloud9 Installation Command:
 curl https://cli-assets.heroku.com/install.sh | sh
 ```
 
-## Deploy <a name="deploy"></a>
+<a name="deploy"></a>
+## Deploy
 
-## Troubleshooting <a name="troubleshooting"></a>
 
-## License <a name="license"></a>
+<a name="troubleshooting"></a>
+## Troubleshooting
+
+
+<a name="license"></a>
+## License
 UNLICENSED
 
 License will not be free to use until seed is complete and stable
