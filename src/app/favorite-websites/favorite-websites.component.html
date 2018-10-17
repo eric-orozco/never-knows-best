@@ -4,7 +4,10 @@
             
             <!-- text filter begin -->
             <mat-form-field>
-                <input matInput [(ngModel)]="mainCategory.nameFilter" (keyup)="filterWebsites(mainCategory.dataSource, $event.target.value, mainCategory.chipFilters)" placeholder="Filter by Name">
+                <input matInput 
+                    [(ngModel)]="mainCategory.nameFilter" 
+                    (keyup)="filterWebsites(mainCategory.dataSource, $event.target.value, mainCategory.chipFilters)" 
+                    placeholder="Filter by Name">
             </mat-form-field>
             <!-- text filter end -->
     
@@ -14,16 +17,26 @@
             </p>
             
             <mat-chip-list>
-                <mat-chip *ngFor="let chipFilter of mainCategory.chipFilters" disabled><!-- disabled to allow checkbox events to function properly -->
-                    <!--<mat-checkbox [(ngModel)]="chipFilter.value" (change)="onChange($event, mainCategory.chipFilters, mainCategory.dataSource)">{{chipFilter.key}}</mat-checkbox>-->
-                    <mat-checkbox [(ngModel)]="chipFilter.value" (change)="filterWebsites(mainCategory.dataSource, mainCategory.nameFilter, mainCategory.chipFilters)">{{chipFilter.key}}</mat-checkbox>
-
+                <mat-chip 
+                    *ngFor="let chipFilter of mainCategory.chipFilters" 
+                    disabled><!-- disabled to allow checkbox events to function properly -->
+                    <mat-checkbox 
+                        [(ngModel)]="chipFilter.value" 
+                        (change)="filterWebsites(mainCategory.dataSource, mainCategory.nameFilter, mainCategory.chipFilters)">{{chipFilter.key}}</mat-checkbox>
                 </mat-chip>
             </mat-chip-list>
             <!-- filters end -->
 
             <!-- table begin -->
-            <table id="category_{{mainCategory.name}}" [hidden]="isLoading || (mainCategory.dataSource && !mainCategory.dataSource.filteredData.length)" mat-table [dataSource]="mainCategory.dataSource" matSort class="mat-elevation-z8" matSortActive="name" matSortDirection="asc" matSortDisableClear>
+            <table id="category_{{mainCategory.name}}"
+                class="mat-elevation-z8"
+                mat-table
+                matSort 
+                [hidden]="isLoading || (mainCategory.dataSource && !mainCategory.dataSource.filteredData.length)" 
+                [dataSource]="mainCategory.dataSource"
+                matSortActive="name" 
+                matSortDirection="asc" 
+                matSortDisableClear>
             
                 <!-- Name Column -->
                 <ng-container matColumnDef="name">

@@ -1,4 +1,4 @@
-import { Component, ngOnDestroy, ngOnInit, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ngOnDestroy, ngOnInit, ViewChild, ViewChildren } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatSort, MatTableDataSource } from '@angular/material'; 
 
@@ -12,7 +12,7 @@ import { FavoriteWebsitesService } from './favorite-websites.service';
 export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
     
     // MatTable dependencies
-    @ViewChildren(MatSort) sorts;
+    @ViewChildren(MatSort) sorts: QueryList<MatSort>;
     
     mainCategories: Object[];
     displayedColumns: string[];
@@ -21,6 +21,7 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
     isLoading = false;
     
     private favoriteWebsitesSub: Subscription;
+    private sortsSub: Subscription;
 
     // make service available for use
     constructor(public favoriteWebsitesService: FavoriteWebsitesService){}
@@ -46,11 +47,12 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
                     // set model for filtering by name
                     category.nameFilter = '';
                     // set website data source
-                    category.dataSource = this.getMatTableDataSource(websiteData.favoriteWebsites.filter((website) => {
+                    let dataToDisplay = websiteData.favoriteWebsites.filter((website) => {
                         return website.tags.find((tag) => {
                             return tag === category.name;
                         });
-                    }), this.sorts._results[index]);
+                    });
+                    category.dataSource = this.getMatTableDataSource(dataToDisplay);
                     // set filtering method
                     category.dataSource.filterPredicate = this.getFilterPredicate();
                 });
@@ -170,10 +172,33 @@ export class FavoriteWebsitesComponent implements OnInit, OnDestroy {
     }
     
     /**
+     * 
+     * 
+     */
+    unsubscribe() {
+        // remove listener(s) (subscription(s)) to prevent memory leak(s)
+        this.favoriteWebsitesSub.unsubscribe();
+        this.sortsSub.unsubscribe();
+    }
+    
+    /**
      * remove subscription to websites listener
      */
     ngOnDestroy() {
-        // remove favorite websites listener (subscription) to prevent memory leak
-        this.favoriteWebsitesSub.unsubscribe();
+        this.unsubscribe();
+    }
+    
+    /**
+     * 
+     * 
+     */ 
+    ngAfterViewInit() {
+        // add sort to table data sources
+        this.sortsSub = this.sorts.changes.subscribe(() => {
+            let matSorts =  this.sorts.toArray();
+            this.mainCategories.forEach((category, index) => {
+                category.dataSource.sort = matSorts[index];
+            }
+        });
     }
 }
