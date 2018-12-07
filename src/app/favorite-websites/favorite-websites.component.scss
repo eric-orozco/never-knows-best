@@ -27,6 +27,10 @@ mat-chip-list {
     width: 100%;
 }
 
+::ng-deep .mat-tab-group .mat-tab-body-content {
+  overflow: hidden;
+}
+
 mat-chip-list > div:nth-child(1) {
     padding: 1rem 0;
 }

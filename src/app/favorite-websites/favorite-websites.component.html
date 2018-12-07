@@ -1,27 +1,26 @@
 <mat-card class="overflow-visible">
     <mat-tab-group>
       <mat-tab style="overflow: visible;" *ngFor="let mainCategory of mainCategories" label="{{mainCategory.name}}">
-            
+
             <!-- text filter begin -->
             <mat-form-field>
-                <input matInput 
-                    [(ngModel)]="mainCategory.nameFilter" 
-                    (keyup)="filterWebsites(mainCategory.dataSource, $event.target.value, mainCategory.chipFilters)" 
+                <input matInput
+                    [(ngModel)]="mainCategory.nameFilter"
+                    (keyup)="filterWebsites(mainCategory.dataSource, $event.target.value, mainCategory.chipFilters)"
                     placeholder="Filter by Name">
             </mat-form-field>
             <!-- text filter end -->
-    
+
             <!-- filters begin -->
             <p class="filters">
                 <mat-icon>filter_list</mat-icon><span class="cdk-visually-hidden"></span>&nbsp;&nbsp;&nbsp;Filter by Tags:
             </p>
-            
+
             <mat-chip-list>
-                <mat-chip 
-                    *ngFor="let chipFilter of mainCategory.chipFilters" 
-                    disabled><!-- disabled to allow checkbox events to function properly -->
-                    <mat-checkbox 
-                        [(ngModel)]="chipFilter.value" 
+                <mat-chip
+                    *ngFor="let chipFilter of mainCategory.chipFilters">
+                    <mat-checkbox
+                        [(ngModel)]="chipFilter.value"
                         (change)="filterWebsites(mainCategory.dataSource, mainCategory.nameFilter, mainCategory.chipFilters)">{{chipFilter.key}}</mat-checkbox>
                 </mat-chip>
             </mat-chip-list>
@@ -31,13 +30,13 @@
             <table id="category_{{mainCategory.name}}"
                 class="mat-elevation-z8"
                 mat-table
-                matSort 
-                [hidden]="isLoading || (mainCategory.dataSource && !mainCategory.dataSource.filteredData.length)" 
+                matSort
+                [hidden]="isLoading || (mainCategory.dataSource && !mainCategory.dataSource.filteredData.length)"
                 [dataSource]="mainCategory.dataSource"
-                matSortActive="name" 
-                matSortDirection="asc" 
+                matSortActive="name"
+                matSortDirection="asc"
                 matSortDisableClear>
-            
+
                 <!-- Name Column -->
                 <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Website</th>
@@ -48,7 +47,7 @@
                         </a>
                     </td>
                 </ng-container>
-                
+
                 <!-- tags Column -->
                 <ng-container matColumnDef="tags">
                     <th mat-header-cell *matHeaderCellDef>Tags</th>
@@ -58,18 +57,18 @@
                         </mat-chip-list>
                     </td>
                 </ng-container>
-            
+
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                
+
             </table>
             <!-- table end -->
-        
+
             <!--  no results begin -->
             <p class="no-results" *ngIf="!loading && mainCategory.dataSource && mainCategory.dataSource.filteredData.length === 0"><mat-icon>warning</mat-icon>
                 <span class="cdk-visually-hidden"></span>&nbsp;&nbsp;&nbsp;There are no websites that match all of the criteria specified.</p>
             <!-- no results end -->
-            
+
         </mat-tab>
     </mat-tab-group>
 </mat-card>

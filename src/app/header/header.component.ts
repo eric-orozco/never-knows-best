@@ -1,14 +1,10 @@
-import {Component} from '@angular/core';
-
-const Logo = require('./NKB.png');
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: [
-        './header.component.css'    
-    ]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-    public logoURL = Logo;
+  public logoURL = 'assets/images/NKB.png';
 }

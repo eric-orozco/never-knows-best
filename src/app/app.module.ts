@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material';
-import { MatTabsModule } from '@angular/material/tabs'
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,27 +17,24 @@ import { FavoriteWebsitesModule } from './favorite-websites/favorite-websites.mo
 import { NotFoundModule } from './core/not-found/not-found.module'; // includes child routes
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HeaderComponent,
-        FooterComponent,
-        CallbackPipe
-    ],
-    imports: [
-        HttpClientModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        MatToolbarModule,
-        MatTabsModule,
-        PostsModule,
-        UsersModule,
-        FavoriteWebsitesModule,
-        NotFoundModule // must ALWAYS be imported last to ensure correct routing
-    ],
-    providers: [
-    ],
-    bootstrap: [
-        AppComponent
-    ]
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    CallbackPipe
+  ],
+  imports: [
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatTabsModule,
+    PostsModule,
+    UsersModule,
+    FavoriteWebsitesModule,
+    NotFoundModule // must ALWAYS be imported last to ensure correct routing
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
