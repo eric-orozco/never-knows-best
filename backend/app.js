@@ -16,15 +16,15 @@ const app = express();
 // mongo shell
 // ./mongo "mongodb+srv://cluster0-yr4jl.mongodb.net/never-knows-best" --username eorozco
 
-// mongoose.connect('mongodb+srv://eorozco:qn4E4scURlIYi9A2@cluster0-yr4jl.mongodb.net/never-knows-best?retryWrites=true', {
-//     useNewUrlParser: true
-//   })
-//   .then(() => {
-//     console.log('MongoDB: connected');
-//   })
-//   .catch((e) => {
-//     console.log('MongoDB: connection failed', e);
-//   });
+mongoose.connect('mongodb+srv://eorozco:qn4E4scURlIYi9A2@cluster0-yr4jl.mongodb.net/never-knows-best?retryWrites=true', {
+    useNewUrlParser: true
+  })
+  .then(() => {
+    console.log('MongoDB: connected');
+  })
+  .catch((e) => {
+    console.log('MongoDB: connection failed', e);
+  });
 
 app.use(bodyParser.json()); // parse JSON data
 app.use(bodyParser.urlencoded({
