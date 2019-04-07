@@ -6,14 +6,15 @@
   "author": "Eric Orozco",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prod": "ng build --prod --stats-json",
     "bundle-report": "npm run prod && webpack-bundle-analyzer dist/neverknowsbest/stats.json",
-    "api": "PORT=8081 nodemon server.js"
+    "postinstall": "ng build — aot -prod --stats-json"
   },
   "private": true,
   "dependencies": {
