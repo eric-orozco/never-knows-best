@@ -10,11 +10,7 @@ import { FavoriteWebsite } from './favorite-website.model';
   providedIn: 'root' // allow angular to find this single instance
 })
 export class FavoriteWebsitesService {
-  private APIURL =
-    window.location.protocol +
-    '//' +
-    window.location.hostname +
-    ':8081/api/favorite-websites';
+  private APIURL = 'https://never-knows-best-api.herokuapp.com/api/favorite-websites';
   constructor(private http: HttpClient, private router: Router) {}
   private favoriteWebsites: FavoriteWebsite[] = [];
   private FAVORITE_WEBSITES_DATA = {

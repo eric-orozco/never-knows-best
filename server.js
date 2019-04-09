@@ -1,20 +1,38 @@
 // Node Server Definition
 
 //Install express server
-const express = require('express');
-const http = require('http');
-const path = require('path');
+const express = require("express");
+const http = require("http");
+const path = require("path");
+
+// define crossdomain headers
+const crossDomainHeaders = function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, Content-Length, X-Requested-With"
+  );
+
+  // intercept OPTIONS method
+  if ("OPTIONS" == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
+};
+
 const app = express();
 // Serve only the static files from the dist directory
-app.use(allowCrossDomain);
-app.use(express.static(__dirname + '/dist'));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+app.use(crossDomainHeaders);
+app.use(express.static(__dirname + "/dist"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/index.html"));
 });
 const port = process.env.PORT || 8080;
 app.set(port);
 const server = http.createServer(app);
-server.listen(port, () => console.log('Running…'));
+server.listen(port, () => console.log("Running…"));
 
 // // import default Node JS package(s)
 // const http = require('http');
@@ -24,29 +42,29 @@ server.listen(port, () => console.log('Running…'));
 // const debug = require('debug')('node-angular');
 
 // /**
-//  * 
-//  * 
+//  *
+//  *
 //  */
 // const normalizePort = val => {
 // 	var port = parseInt(val, 10);
-	
+
 // 	console.log('normalize port',port);
-	
+
 // 	if(isNaN(port)){
 // 		return val;
 // 	}
-	
+
 // 	if (port >= 0) {
 // 		return port;
 // 	}
-	
+
 // 	// return false;
 // };
 
 // /**
-//  * 
-//  * 
-//  */ 
+//  *
+//  *
+//  */
 // const onError = error => {
 // 	if (error.syscall !== "listen") {
 // 		throw error;
@@ -67,8 +85,8 @@ server.listen(port, () => console.log('Running…'));
 // };
 
 // /**
-//  * 
-//  * 
+//  *
+//  *
 //  */
 // const onListening = () => {
 // 	const addr = server.address();
