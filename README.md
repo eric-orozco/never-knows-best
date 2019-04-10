@@ -27,7 +27,7 @@ getting a project ready to begin actual feature development.
 <a name="technology"></a>
 ## Technology/Packages 
 
-* [Angular 6](https://angular.io/apim)
+* [Angular 7](https://angular.io/apim)
     * [Angular Style Guide](https://angular.io/guide/styleguide)
     * HTML 5 routes/history
     * [TypeScript](https://www.typescriptlang.org/docs/handbook/basic-types.html)
