@@ -4,22 +4,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.app-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  margin: 0 auto auto auto;
-  min-width: calc(100vw - 4rem);
-  padding: 2rem;
-  /* make component injected by router full height (for sticky footer) */
-  display: flex;
-  flex-direction: column;
-  >*:not(router-outlet) {
-      flex: 1;
-      display: block;
-  }
-}

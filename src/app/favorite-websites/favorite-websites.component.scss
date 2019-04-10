@@ -1,6 +1,18 @@
 table {
-    margin: 2rem auto;
+    margin: 1rem auto;
     width: 100%;
+
+    a {
+        &.mat-button {
+            padding-left: 0;
+            text-align: left;
+            white-space: normal;
+
+            .mat-icon {
+                margin-right: .5rem;
+            }
+        }
+    }
 }
 
 .filters {
@@ -12,7 +24,7 @@ table {
 .no-results {
     align-items: center;
     display: flex;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 ::ng-deep .mat-tab-label {
@@ -46,18 +58,3 @@ td mat-chip-list div {
 ::ng-deep .mat-tab-group {
     overflow: hidden;
 }
-
-/* start work around for active sort arrow being the only one to animate properly */
-/*
-::ng-deep .mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
-    opacity: 1;
-}
-
-::ng-deep .mat-sort-header-pointer-left.ng-trigger.ng-trigger-leftPointer{
-    transform: rotate(-45deg);
-}
-::ng-deep .mat-sort-header-pointer-right.ng-trigger.ng-trigger-rightPointer{
-    transform: rotate(45deg);
-}
-*/
-/* end work around for active sort arrow being the only one to animate properly */

@@ -6,8 +6,8 @@
 
 main {
     margin: 0 auto auto auto;
-    min-width: calc(100vw - 4rem);
-    padding: 2rem;
+    width: calc(100vw - 2rem);
+    padding: 1rem;
     /* make component injected by router full height (for sticky footer) */
     display: flex;
     flex-direction: column;
