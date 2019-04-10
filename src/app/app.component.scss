@@ -2,6 +2,16 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    .mat-tab-nav-bar {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+
+        .mat-tab-link {
+            white-space: normal;
+        }
+    }
 }
 
 main {
@@ -16,3 +26,5 @@ main {
         display: block;
     }
 }
+
+
