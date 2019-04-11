@@ -1,113 +1,113 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { Post } from './post.model';
 
-@Injectable({
-  providedIn: 'root' // allow angular to find this single instance
-})
+@Injectable({ providedIn: 'root' })
 export class PostsService {
   private posts: Post[] = [];
-  // pass posts as subject payload
   private postsUpdated = new Subject<Post[]>();
   private postsAPIURL = 'https://never-knows-best-api.herokuapp.com/api/posts';
-
   constructor(private http: HttpClient, private router: Router) {}
 
-  /**
-   *
-   *
-   */
   getPosts() {
-    // return a spread so the original reference array remains immutable (unable to be changed)
-    // return [...this.posts];
-
     this.http
       .get<{ message: string; posts: any }>(this.postsAPIURL)
-      // convert data fields to match UI models
       .pipe(
         map(postData => {
           return postData.posts.map(post => {
             return {
-              id: post._id,
               title: post.title,
-              content: post.content
+              content: post.content,
+              id: post._id,
+              imagePath: post.imagePath
             };
           });
         })
       )
       .subscribe(transformedPosts => {
         this.posts = transformedPosts;
-        // send notification that posts were updated
         this.postsUpdated.next([...this.posts]);
       });
   }
 
-  getPost(id: string) {
-    return this.http.get<{ _id: string; title: string; content: string }>(
-      this.postsAPIURL + '/' + id
-    );
-  }
-
-  deletePost(postId: string) {
-    this.http.delete(this.postsAPIURL + '/' + postId).subscribe(() => {
-      // remove the post that was deleted from collection
-      const updatedPosts = this.posts.filter(post => {
-        return post.id !== postId;
-      });
-      this.posts = updatedPosts;
-      // send notification that posts were updated
-      this.postsUpdated.next([...this.posts]);
-      console.log('Deleted post ' + postId);
-    });
-  }
-
-  /**
-   *
-   *
-   */
   getPostUpdateListener() {
     return this.postsUpdated.asObservable();
   }
 
-  /**
-   *
-   *
-   * @param {string} title -
-   * @param {string} content -
-   */
-  addPost(title: string, content: string) {
-    const post: Post = {
-      id: null,
-      title: title,
-      content: content
-    };
+  getPost(id: string) {
+    return this.http.get<{ _id: string, title: string, content: string, imagePath: string }>(
+      this.postsAPIURL + '/' + id
+    );
+  }
 
+  addPost(title: string, content: string, image: File) {
+    const postData = new FormData();
+    postData.append('title', title);
+    postData.append('content', content);
+    postData.append('image', image, title);
     this.http
-      .post<{ message: string; postId: string }>(this.postsAPIURL, post)
+      .post<{ message: string; post: Post }>(
+        this.postsAPIURL,
+        postData
+      )
       .subscribe(responseData => {
-        console.log('responseData message: ', responseData.message);
-        const id = responseData.postId;
-        post.id = id;
+        const post: Post = {
+          id: responseData.post.id,
+          title: title,
+          content: content,
+          imagePath: responseData.post.imagePath
+        };
         this.posts.push(post);
-        // pushes/emits new value of copy (spread) of updated posts
         this.postsUpdated.next([...this.posts]);
         this.router.navigate(['/']);
       });
   }
 
-  updatePost(id: string, title: string, content: string) {
-    const post: Post = { id: id, title: title, content: content };
-    this.http.put(this.postsAPIURL + '/' + id, post).subscribe(response => {
-      const updatedPosts = [...this.posts];
-      const oldPostIndex = updatedPosts.findIndex(p => p.id === post.id);
-      updatedPosts[oldPostIndex] = post;
-      this.posts = updatedPosts;
-      this.postsUpdated.next([...this.posts]);
-      this.router.navigate(['/']);
-    });
+  updatePost(id: string, title: string, content: string, image: File | string) {
+    let postData: Post | FormData;
+    if (typeof image === 'object') {
+      postData = new FormData();
+      postData.append('id', id);
+      postData.append('title', title);
+      postData.append('content', content);
+      postData.append('image', image, title);
+    } else {
+      postData = {
+        id: id,
+        title: title,
+        content: content,
+        imagePath: image
+      };
+    }
+    this.http
+      .put(this.postsAPIURL + '/' + id, postData)
+      .subscribe(response => {
+        const updatedPosts = [...this.posts];
+        const oldPostIndex = updatedPosts.findIndex(p => p.id === id);
+        const post: Post = {
+          id: id,
+          title: title,
+          content: content,
+          imagePath: ''
+        };
+        updatedPosts[oldPostIndex] = post;
+        this.posts = updatedPosts;
+        this.postsUpdated.next([...this.posts]);
+        this.router.navigate(['/']);
+      });
+  }
+
+  deletePost(postId: string) {
+    this.http
+      .delete(this.postsAPIURL + '/' + postId)
+      .subscribe(() => {
+        const updatedPosts = this.posts.filter(post => post.id !== postId);
+        this.posts = updatedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
   }
 }

@@ -7,13 +7,13 @@ import { PostsComponent } from './posts.component';
     imports: [
         RouterModule.forChild([
             {
-                path: 'blog', 
+                path: 'blog',
                 component: PostsComponent
             }
         ])
     ],
     exports: [
-        RouterModule    
+        RouterModule
     ]
 })
 export class PostsRoutingModule {}

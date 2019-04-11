@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatCardModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PostCreateComponent } from './post-create.component';
 import { PostCreateRoutingModule } from './post-create-routing.module';
@@ -21,7 +20,7 @@ import { PostCreateRoutingModule } from './post-create-routing.module';
         PostCreateRoutingModule
     ],
     exports: [
-        PostCreateComponent    
+        PostCreateComponent
     ]
 })
 export class PostCreateModule {}

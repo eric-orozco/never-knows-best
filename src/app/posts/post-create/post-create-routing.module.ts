@@ -5,22 +5,22 @@ import { PostCreateComponent } from './post-create.component';
 
 /**
  * add the ability to route to this independent module
- */ 
+ */
 @NgModule({
     imports: [
         RouterModule.forChild([
             {
-                path: 'posts-create', 
+                path: 'posts-create',
                 component: PostCreateComponent
             },
             {
-                path: 'posts-edit/:postId', 
+                path: 'posts-edit/:postId',
                 component: PostCreateComponent
             }
         ])
     ],
     exports: [
-        RouterModule    
+        RouterModule
     ]
 })
 export class PostCreateRoutingModule {}
